@@ -1,0 +1,22 @@
+# Use standard Python ARM64 image and install uv
+FROM --platform=linux/arm64 python:3.11-slim
+
+WORKDIR /app
+
+# Install uv package manager
+RUN pip install uv
+
+# Copy uv files  
+COPY src/docker/pyproject.toml src/docker/uv.lock ./
+
+# Install dependencies using uv
+RUN uv sync --frozen --no-cache
+
+# Copy agent file
+COPY src/agents/agent_native_memory.py ./
+
+# Expose port
+EXPOSE 8080
+
+# Run application
+CMD ["uv", "run", "uvicorn", "agent_native_memory:app", "--host", "0.0.0.0", "--port", "8080"]
