@@ -1,0 +1,10 @@
+fastapi==0.104.1
+uvicorn[standard]==0.24.0
+pydantic==2.5.0
+strands-agents
+strands-agents-tools
+bedrock-agentcore
+flask
+boto3
+numpy
+playwright

@@ -1,0 +1,15 @@
+[project]
+name = "docker-image"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "fastapi>=0.117.1",
+    "httpx>=0.28.1",
+    "pydantic>=2.11.9",
+    "strands-agents>=1.9.1",
+    "uvicorn[standard]>=0.36.0",
+    "bedrock-agentcore",
+    "strands-agents-tools",
+]

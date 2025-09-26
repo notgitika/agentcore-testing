@@ -1,0 +1,39 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+env/
+venv/
+.venv/
+.env
+build/
+dist/
+wheels/
+*.egg-info
+
+
+# IDE
+.vscode/
+.idea/
+
+# Temp files
+*.bak
+*~
+.DS_Store
+
+# Large docs
+*.pdf
+
+# Test/temp scripts
+*_test.py
+test_*.py
+invoke_*.py
+simple_*.py
+
+# Docker
+.dockerignore
+
+# Logs
+*.log
