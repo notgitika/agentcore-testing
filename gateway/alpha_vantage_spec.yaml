@@ -1,0 +1,31 @@
+openapi: 3.0.3
+info:
+  title: AlphaVantage Price Tool
+  version: '1.0'
+servers:
+  - url: https://www.alphavantage.co
+paths:
+  /query:
+    get:
+      operationId: getPrice
+      summary: Get latest price for a symbol
+      parameters:
+        - in: query
+          name: function
+          schema:
+            type: string
+            enum: [GLOBAL_QUOTE]
+          required: true
+        - in: query
+          name: symbol
+          schema:
+            type: string
+          required: true
+        - in: query
+          name: apikey
+          schema:
+            type: string
+          required: true
+      responses:
+        '200':
+          description: OK

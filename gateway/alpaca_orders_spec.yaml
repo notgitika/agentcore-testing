@@ -1,0 +1,51 @@
+openapi: 3.0.3
+info:
+  title: Alpaca Paper Orders
+  version: '1.0'
+servers:
+  - url: https://paper-api.alpaca.markets
+components:
+  securitySchemes:
+    AlpacaKey:
+      type: apiKey
+      in: header
+      name: APCA-API-KEY-ID
+    AlpacaSecret:
+      type: apiKey
+      in: header
+      name: APCA-API-SECRET-KEY
+paths:
+  /v2/orders:
+    post:
+      security:
+        - AlpacaKey: []
+          AlpacaSecret: []
+      summary: Place order
+      operationId: placeOrder
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [symbol, side, qty, type, time_in_force]
+              properties:
+                symbol:
+                  type: string
+                side:
+                  type: string
+                  enum: [buy, sell]
+                qty:
+                  type: number
+                  minimum: 1
+                type:
+                  type: string
+                  enum: [market, limit]
+                time_in_force:
+                  type: string
+                  enum: [day, gtc, opg, cls, ioc, fok]
+                limit_price:
+                  type: number
+      responses:
+        '200':
+          description: OK
